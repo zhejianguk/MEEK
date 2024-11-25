@@ -1,7 +1,7 @@
 MEEK: Re-thinking Heterogeneous Parallel Error Detection Architecture for Real-World OoO Superscalar Processors
 ==================================================
 
-This repository contains artefacts and workflows (Parsec 3.0) to reproduce experiments from the DAC 2025 submission 1436
+This repository contains artefacts and workflows (Parsec 3.0) to reproduce experiments from the DAC 2025 submission 1425
 
 "MEEK: A Generalized Microarchitecture for Fine-Grained Security Analysis on OoO Superscalar Cores"
 
