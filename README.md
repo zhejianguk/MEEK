@@ -46,7 +46,7 @@ make config=RocketConfig
 
 (**OUTPUT I**) After a few hours, a software simulator and the corresponding Verilog code will be generated:
 ```
-./RocketConfig # Software Simulator
+./simulator-chipyard-RocketConfig # Software Simulator
 ./generated-src/chipyard.TestHarness.RocketConfig/chipyard.TestHarness.RocketConfig.top.v # Verilog code
 ```
 
