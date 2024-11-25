@@ -1,0 +1,1 @@
+-c -p -v -t 1 -i media.dat -o output.dat.ddp

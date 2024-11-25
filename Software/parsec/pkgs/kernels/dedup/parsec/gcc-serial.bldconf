@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ${PARSECDIR}/pkgs/kernels/dedup/parsec/gcc.bldconf
+
+# Override build environment
+build_env="version=serial CFLAGS=\"-I${PARSECDIR}/pkgs/libs/ssl/inst/${PARSECPLAT}/include -I${PARSECDIR}/pkgs/libs/zlib/inst/${PARSECPLAT}/include ${CFLAGS}\" LDFLAGS=\"-L${PARSECDIR}/pkgs/libs/ssl/inst/${PARSECPLAT}/lib -L${PARSECDIR}/pkgs/libs/zlib/inst/${PARSECPLAT}/lib ${LDFLAGS}\""
+
+

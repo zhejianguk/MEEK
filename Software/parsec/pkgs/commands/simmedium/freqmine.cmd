@@ -1,0 +1,1 @@
+kosarak_500k.dat 410

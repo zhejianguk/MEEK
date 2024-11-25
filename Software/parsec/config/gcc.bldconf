@@ -1,0 +1,85 @@
+#!/bin/bash
+#
+# gcc.bldconf - file containing global information necessary to build
+#               PARSEC with gcc
+#
+# Copyright (C) 2006-2009 Princeton University
+# Written by Christian Bienia (Initial version)
+#            Christian Fensch (Sparc/Solaris port)
+
+export CC_HOME="$RISCV"
+export BINUTIL_HOME="$RISCV"
+export GNUTOOL_HOME="/usr"
+export BINARY_PREFIX="riscv64-unknown-linux-gnu-"
+# export GC_KERNEL="/home/centos/gc_kernel/gc_main_minesweeper.o"
+export GC_KERNEL="$MEEK/Software/checker_thread/checker_thread.o"
+
+if [ -z "$HOSTCC" ]; then
+  export HOSTCC=gcc
+fi
+if [ -z "$M4" ]; then
+  export M4=m4
+fi
+if [ -z "$MAKE" ]; then
+  export MAKE=make
+fi
+if [ -z "$TARGET_CROSS" ]; then
+  export TARGET_CROSS="${RISCV}/bin/"
+fi
+
+export CC_HOME="$RISCV"
+
+# Compilers and preprocessors
+export CC="${CC_HOME}/bin/${BINARY_PREFIX}gcc -lstdc++"
+export CXX="${CC_HOME}/bin/${BINARY_PREFIX}g++"
+export CPP="${CC_HOME}/bin/${BINARY_PREFIX}cpp"
+export CXXCPP=""
+
+# GNU Binutils
+export LD="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ld"
+export AS="${BINUTIL_HOME}/bin/${BINARY_PREFIX}as"
+export AR="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ar"
+export RANLIB="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ranlib"
+export STRIP="${BINUTIL_HOME}/bin/${BINARY_PREFIX}strip"
+
+# Arguments to use
+export CFLAGS=" $CFLAGS -O3"
+export CXXFLAGS="$CXXFLAGS  -O3 -fpermissive -fno-exceptions -std=c++17"
+export CPPFLAGS="-O3"
+export CXXCPPFLAGS="-O3"
+export LIBS="${GC_KERNEL} -lpthread"
+export EXTRA_LIBS=""
+export PARMACS_MACRO_FILE="pthreads"
+export LDFLAGS="-static"
+# Add PARSEC version to compiler flags
+if [ -f "${PARSECDIR}/version" ]; then
+  CFLAGS="${CFLAGS} -DPARSEC_VERSION=$(${CAT} ${PARSECDIR}/version)"
+  CXXFLAGS="${CXXFLAGS} -DPARSEC_VERSION=$(${CAT} ${PARSECDIR}/version)"
+fi
+
+# Java
+export JAVA_HOME="/usr"
+export JAVAC="${JAVA_HOME}/bin/javac"
+
+# Version numbers
+if [ -x ${CC} ]; then
+  CC_ver=$(${CC} --version)
+else
+  CC_ver=""
+fi
+if [ -x ${CXX} ]; then
+  CXX_ver=$(${CXX} --version)
+else
+  CXX_ver=""
+fi
+if [ -x ${LD} ]; then
+  LD_ver=$(${LD} --version)
+else
+  LD_ver=""
+fi
+if [ -x ${JAVAC} ]; then
+  JAVAC_ver=$(${JAVAC} -version 2>&1)
+else
+  JAVAC_ver=""
+fi
+
