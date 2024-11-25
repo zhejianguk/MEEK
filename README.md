@@ -13,7 +13,7 @@ Platform pre-requisities
 
 Dependencies Installation
 ========================
-Building simulation platform, RISC-V toolchain, Chisel toolchain, and other dependencies: 
+**Step 1.** Building simulation platform, RISC-V toolchain, Chisel toolchain, and other dependencies: 
 
 ```
 git clone https://github.com/ucb-bar/chipyard.git
@@ -25,7 +25,7 @@ git checkout 1.7.0
 
 Hardware
 ========================
-Setting environments:
+**Step 1.** Setting environments:
 
 ```
 export MEEK=$(dirname $(pwd))
@@ -33,12 +33,12 @@ export PLATFORM=$(pwd)
 . ./env.sh
 ```
 
-Updating the source code, ensuring to achieve the latest version:
+**Step 2.** Updating the source code, ensuring to achieve the latest version:
 ```
 $MEEK/Scripts/update_src.sh
 ```
 
-Building hardware for MEEK:
+**Step 3.** Building hardware for MEEK:
 ```
 cd $PLATFORM/sims/verilator
 make config=RocketConfig
@@ -55,21 +55,21 @@ Software
 ========================
 To run Parsec, both Linux kernel and Parsec are required to be compiled:
 
-For Linux, downloading the kernel code:
+**Step 1.** For Linux, downloading the kernel code:
 ```
 git clone https://github.com/firesim/linux
 git checkout firesim-v57
 ```
 (**OUTPUT II**) With that, compiling the kernel using following steps: [link](https://firemarshal.readthedocs.io/en/latest/index.html)
 
-For Parsec, compiling checker thread first:
+**Step 2.** For Parsec, compiling checker thread first:
 ```
 cd $MEEK/Software/checker_thread
 make checker_thread
 ```
 After the compilation, a checker_thread.o is generated. 
 
-Now, compiling Parsec and link the checker_thread.o:
+**Step 3.** Now, compiling Parsec and link the checker_thread.o:
 ```
 cd $MEEK/Software/parsec/pkgs
 ./build_parsec.sh
